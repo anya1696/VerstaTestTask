@@ -11,28 +11,32 @@
   <label>Дата забора груза: </label> <input type="date" name="date" /><br />
   <input type="submit" value="Отправить" />
 </form>
-<table>
-  <tr>
-    <td>Номер заказа</td>
-    <td>Город отправителя</td>
-    <td>Адрес отправителя</td>
-    <td>Город получателя</td>
-    <td>Адрес получателя</td>
-    <td>Вес груза</td>
-    <td>Дата забора груза</td>
-  </tr>
-  @{
-    foreach (Order order in ViewBag.Orders)
-    {
-      <tr>
-        <td>@order.OrderId</td>
-        <td>@order.SenderCity</td>
-        <td>@order.SenderAddress</td>
-        <td>@order.RecipientCity</td>
-        <td>@order.RecipientAddress</td>
-        <td>@order.Weight</td>
-        <td>@order.Date</td>
-      </tr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Номер заказа</th>
+      <th>Город отправителя</th>
+      <th>Адрес отправителя</th>
+      <th>Город получателя</th>
+      <th>Адрес получателя</th>
+      <th>Вес груза</th>
+      <th>Дата забора груза</th>
+    </tr>
+  </thead>
+  <tbody>
+    @{
+      foreach (Order order in ViewBag.Orders)
+      {
+        <tr>
+          <td>@order.OrderId</td>
+          <td>@order.SenderCity</td>
+          <td>@order.SenderAddress</td>
+          <td>@order.RecipientCity</td>
+          <td>@order.RecipientAddress</td>
+          <td>@order.Weight</td>
+          <td>@order.Date</td>
+        </tr>
+      }
     }
-  }
+  </tbody>
 </table>
