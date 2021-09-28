@@ -11,7 +11,7 @@ namespace SampleMVCApps.Controllers
 {
     public class OrderController : Controller
     {
-        private OrderHandlerModel orderHandler = new OrderHandlerModel();
+        private OrderStorage orderStorage = new OrderStorage();
         private readonly ILogger<OrderController> _logger;
         public OrderController(ILogger<OrderController> logger)
         {
@@ -21,24 +21,22 @@ namespace SampleMVCApps.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.Model = orderHandler;
-            return View();
+            return BuildResponse();
         }
 
         [HttpPost]
         public IActionResult Index(string senderCity, string senderAddress, string recipientCity,
         string recipientAddress, float weight, DateTime date)
         {
-            Order data = new Order(senderCity, senderAddress, recipientCity, recipientAddress, weight, date);
-            orderHandler.SaveDataToDB(data);
-            ViewBag.Model = orderHandler;
-            string testData = $"Login: {senderCity}   Password: {senderAddress}";
-            return View(GetDataBase());
+            Order order = new Order(senderCity, senderAddress, recipientCity, recipientAddress, weight, date);
+            orderStorage.SaveOrder(order);
+            return BuildResponse();
         }
 
-        public List<Order> GetDataBase()
+        private IActionResult BuildResponse()
         {
-            return orderHandler.DataBase;
+            ViewBag.Orders = orderStorage.GetAllOrders();
+            return View();
         }
     }
 }

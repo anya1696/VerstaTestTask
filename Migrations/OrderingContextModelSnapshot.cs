@@ -7,7 +7,7 @@ using SampleMVCApps;
 
 namespace SampleMVCApps.Migrations
 {
-    [DbContext(typeof(OrderingContext))]
+    [DbContext(typeof(OrderContext))]
     partial class OrderingContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

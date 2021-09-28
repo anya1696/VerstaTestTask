@@ -8,7 +8,7 @@ using SampleMVCApps;
 
 namespace SampleMVCApps.Migrations
 {
-    [DbContext(typeof(OrderingContext))]
+    [DbContext(typeof(OrderContext))]
     [Migration("20210927162738_InitialCreate")]
     partial class InitialCreate
     {

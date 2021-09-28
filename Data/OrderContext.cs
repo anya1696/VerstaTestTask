@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SampleMVCApps
 {
-    public class OrderingContext : DbContext
+    public class OrderContext : DbContext
     {
         public DbSet<Order> Orders { get; set; }
         public string DbPath { get; private set; }
 
-        public OrderingContext()
+        public OrderContext()
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);

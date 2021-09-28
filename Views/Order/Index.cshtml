@@ -13,6 +13,7 @@
 </form>
 <table>
   <tr>
+    <td>Номер заказа</td>
     <td>Город отправителя</td>
     <td>Адрес отправителя</td>
     <td>Город получателя</td>
@@ -21,18 +22,17 @@
     <td>Дата забора груза</td>
   </tr>
   @{
-    OrderHandlerModel orderHandler = ViewBag.Model;
-    foreach (Order data in orderHandler.DataBase)
+    foreach (Order order in ViewBag.Orders)
     {
       <tr>
-        <td>@data.OrderId</td>
-        <td>@data.SenderCity</td>
-        <td>@data.SenderAddress</td>
-        <td>@data.RecipientCity</td>
-        <td>@data.RecipientAddress</td>
-        <td>@data.Weight</td>
-        <td>@data.Date</td>
+        <td>@order.OrderId</td>
+        <td>@order.SenderCity</td>
+        <td>@order.SenderAddress</td>
+        <td>@order.RecipientCity</td>
+        <td>@order.RecipientAddress</td>
+        <td>@order.Weight</td>
+        <td>@order.Date</td>
       </tr>
-    } 
+    }
   }
 </table>
