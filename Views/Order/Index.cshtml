@@ -1,0 +1,38 @@
+﻿@{
+  ViewData["Title"] = "Home Page";
+}
+
+<form method="post">
+  <label>Город отправителя: </label> <input type="text" name="senderCity" /><br />
+  <label>Адрес отправителя: </label> <input type="text" name="senderAddress" /><br />
+  <label>Город получателя: </label> <input type="text" name="recipientCity" /><br />
+  <label>Адрес получателя: </label> <input type="text" name="recipientAddress" /><br />
+  <label>Вес груза: </label> <input type="number" name="weight" /><br />
+  <label>Дата забора груза: </label> <input type="date" name="date" /><br />
+  <input type="submit" value="Отправить" />
+</form>
+<table>
+  <tr>
+    <td>Город отправителя</td>
+    <td>Адрес отправителя</td>
+    <td>Город получателя</td>
+    <td>Адрес получателя</td>
+    <td>Вес груза</td>
+    <td>Дата забора груза</td>
+  </tr>
+  @{
+    OrderHandlerModel orderHandler = ViewBag.Model;
+    foreach (Order data in orderHandler.DataBase)
+    {
+      <tr>
+        <td>@data.OrderId</td>
+        <td>@data.SenderCity</td>
+        <td>@data.SenderAddress</td>
+        <td>@data.RecipientCity</td>
+        <td>@data.RecipientAddress</td>
+        <td>@data.Weight</td>
+        <td>@data.Date</td>
+      </tr>
+    } 
+  }
+</table>
